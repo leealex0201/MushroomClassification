@@ -1,2 +1,2 @@
 # MushroomClassification
-This is another practice code script for mushroom classification data
+This is another practice code script for mushroom classification data. Mushroom data contains many features and edibility will be determined based on the features. However, it is not clear that all features listed are equally crucial for the classification. Correlated features could be removed by applying the penalty term in the cost function. In this project, I will attempt to apply L1 penalty term in the optimization process of regression analysis.
