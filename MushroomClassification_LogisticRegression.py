@@ -79,7 +79,6 @@ TestResult = np.zeros((len(B)))
 # logistic regression
 for i in range(0,len(Power)):
     clf = LogisticRegression(C=Power[i], penalty='l1').fit(X_train_scaled, y_train)
-    Title = 'Logistic regression, C = {:.5f}'.format(Power[i])
     fpr, tpr, thresh = metrics.roc_curve(y_train, clf.predict(X_train_scaled))
     TrainResult[i] = metrics.auc(fpr, tpr)
     fpr, tpr, thresh = metrics.roc_curve(y_test, clf.predict(X_test_scaled))
@@ -88,4 +87,12 @@ for i in range(0,len(Power)):
 # plot the result; which C value I should use?
 plt.plot(B,TrainResult)
 plt.plot(B,TestResult)
+plt.show()
+
+# it looks like acceptable C value is around 10**-1 to 10. I will use one of those
+# and plot the plot importance
+clf = LogisticRegression(C=1, penalty='l1').fit(X_train_scaled, y_train)
+coefs = pd.Series(np.absolute(clf.coef_[0]), index=X.columns)
+coefs = coefs.sort_values()
+coefs.plot(kind="bar")
 plt.show()
