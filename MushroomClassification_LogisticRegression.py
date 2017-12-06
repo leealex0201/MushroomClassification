@@ -68,7 +68,7 @@ X_train_scaled = scaler.fit_transform(X_train)
 X_test_scaled = scaler.transform(X_test)
 
 # exponent data for L1 regularization parameter
-B = np.arange(-10,10).astype(float)
+B = np.arange(-4,4).astype(float)
 Power = np.zeros(B.shape)
 for i in range(0,len(B)):
     Power[i] = 10**B[i]
